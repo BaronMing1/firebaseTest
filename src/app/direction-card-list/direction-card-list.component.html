@@ -1,11 +1,48 @@
+<mat-card-content>
+  <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="annee">
+      <th mat-header-cell *matHeaderCellDef>Année</th>
+      <td mat-cell *matCellDef="let element">{{ element.annee }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="president">
+      <th mat-header-cell *matHeaderCellDef>Président</th>
+      <td mat-cell *matCellDef="let element">{{ element.direction[0].Nom }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="vicepresident">
+      <th mat-header-cell *matHeaderCellDef>Vice-Président</th>
+      <td mat-cell *matCellDef="let element">
+        {{
+          element.direction[1].Nom !== undefined ? element.direction[1].Nom : ""
+        }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="tresorier">
+      <th mat-header-cell *matHeaderCellDef>Trésoriers</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.direction[2] !== undefined ? element.direction[2].Nom : "" }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card-content>
+<mat-card-content> </mat-card-content>
 <mat-card *ngFor="let course of courses" class="course-card mat-elevation-z10">
   <mat-card-header>
     <mat-card-title>{{ course.annee }}</mat-card-title>
   </mat-card-header>
-
-  <mat-card-content>
-    <p>{{ course.direction[0].Nom }}</p>
-  </mat-card-content>
+  <p>{{ course.direction[0].Nom }}</p>
   test !
   <mat-card-actions class="course-actions">
     <button

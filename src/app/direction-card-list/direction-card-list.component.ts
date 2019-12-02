@@ -1,13 +1,20 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import { Direction } from '../model/direction';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
+import { Direction } from "../model/direction";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 @Component({
-  selector: 'direction-card-list',
-  templateUrl: './direction-card-list.component.html',
-  styleUrls: ['./direction-card-list.component.scss']
+  selector: "direction-card-list",
+  templateUrl: "./direction-card-list.component.html",
+  styleUrls: ["./direction-card-list.component.scss"]
 })
 export class DirectionCardListComponent implements OnInit {
+  displayedColumns: string[] = [
+    "annee",
+    "president",
+    "vicepresident",
+    "tresorier"
+  ];
+
   @Input()
   courses: Direction[];
 
